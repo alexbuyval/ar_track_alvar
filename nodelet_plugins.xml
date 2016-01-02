@@ -1,0 +1,9 @@
+<library path="lib/libindividualMarkersNoKinectNodeLet">
+  <class name="ARTrackNodelet"
+         type="alvar::ARTrackNodelet"
+         base_class_type="nodelet::Nodelet">
+    <description> 
+      IndividualMarkersNoKinect nodelet.
+    </description>
+  </class>
+</library>

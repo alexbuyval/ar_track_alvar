@@ -22,6 +22,7 @@ find_package(catkin COMPONENTS
         ${MSG_DEPS}
         dynamic_reconfigure
         cmake_modules
+        nodelet
         REQUIRED)
 
 find_package(Eigen REQUIRED)
@@ -50,6 +51,7 @@ catkin_package(
         pcl_ros
         pcl_conversions
         dynamic_reconfigure
+        nodelet
 )
 
 include_directories(include 
@@ -116,6 +118,10 @@ set(ALVAR_TARGETS ar_track_alvar individualMarkersNoKinect createMarker)
 add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
 target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
 add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
+
+add_library(individualMarkersNoKinectNodeLet nodes/IndividualMarkersNoKinectNode.cpp nodes/IndividualMarkersNoKinectNodeLet.cpp)
+target_link_libraries(individualMarkersNoKinectNodeLet ar_track_alvar ${catkin_LIBRARIES})
+add_dependencies(individualMarkersNoKinectNodeLet ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
 
 #add_executable(trainMarkerBundle nodes/TrainMarkerBundle.cpp)
 #target_link_libraries(trainMarkerBundle ar_track_alvar ${catkin_LIBRARIES})
