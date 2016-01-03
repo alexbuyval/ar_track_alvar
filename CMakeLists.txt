@@ -119,6 +119,10 @@ add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
 target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
 add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
 
+add_executable(individualMarkersNoKinectOpenCV nodes/IndividualMarkersNoKinectOpenCV.cpp)
+target_link_libraries(individualMarkersNoKinectOpenCV ar_track_alvar ${catkin_LIBRARIES})
+add_dependencies(individualMarkersNoKinectOpenCV ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
+
 add_library(individualMarkersNoKinectNodeLet nodes/IndividualMarkersNoKinectNode.cpp nodes/IndividualMarkersNoKinectNodeLet.cpp)
 target_link_libraries(individualMarkersNoKinectNodeLet ar_track_alvar ${catkin_LIBRARIES})
 add_dependencies(individualMarkersNoKinectNodeLet ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})

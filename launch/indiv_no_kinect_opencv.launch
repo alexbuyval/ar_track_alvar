@@ -1,0 +1,13 @@
+<launch>
+	<arg name="marker_size" default="4.4" />
+	<arg name="max_new_marker_error" default="0.08" />
+	<arg name="max_track_error" default="0.2" />
+	<arg name="output_frame" default="/base_link" />
+	<arg name="max_frequency" default="30" />
+
+	<node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkersNoKinectOpenCV" respawn="false" output="screen" args="$(arg marker_size) $(arg max_new_marker_error) $(arg max_track_error) $(arg output_frame) $(arg max_frequency)" />
+	
+	<node pkg="rosbag" type="record" name="rosbag_record_topics"
+	  args="-o  individualMarkersNoKinectOpenCV /ar_pose_marker /test_video_lag" 
+	/><!--/image_raw-->
+</launch>
