@@ -49,6 +49,7 @@ using namespace alvar;
 using namespace std;
 
 bool init=true;
+int camera_index=0;
 Camera *cam;
 ros::Publisher arMarkerPub_;
 ar_track_alvar_msgs::AlvarMarkers arPoseMarkers_;
@@ -84,7 +85,7 @@ int main(int argc, char *argv[])
 	ros::init (argc, argv, "marker_detect");
 	ros::NodeHandle n, pn("~");
 	
-	if(argc < 5){
+	if(argc < 6){
 		std::cout << std::endl;
 		cout << "Not enough arguments provided." << endl;
 		cout << "Usage: ./individualMarkersNoKinect <marker size in cm> <max new marker error> "
@@ -98,10 +99,11 @@ int main(int argc, char *argv[])
 	max_new_marker_error = atof(argv[2]);
 	max_track_error = atof(argv[3]);
         output_frame = argv[4];
+	camera_index = atoi(argv[5]);
 	marker_detector.SetMarkerSize(marker_size);
 
-  if (argc > 5)
-    max_frequency = atof(argv[5]);
+  if (argc > 6)
+    max_frequency = atof(argv[6]);
 
   // Set dynamically configurable parameters so they don't get replaced by default values
   pn.setParam("marker_size", marker_size);
@@ -123,7 +125,7 @@ int main(int argc, char *argv[])
 
     IplImage* ipl_image=0;
   
-          CvCapture* capture = cvCreateCameraCapture(CV_CAP_ANY+1); //cvCaptureFromCAM( 0 );
+          CvCapture* capture = cvCreateCameraCapture(CV_CAP_ANY+camera_index); //cvCaptureFromCAM( 0 );
         assert( capture );
 
         //cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 640);//1280); 
