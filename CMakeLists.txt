@@ -98,34 +98,34 @@ target_link_libraries(ar_track_alvar ${OpenCV_LIBS} ${TinyXML_LIBRARIES} ${catki
 add_dependencies(ar_track_alvar ${GENCPP_DEPS})
 
 # Kinect filtering code
-set(KINECT_FILTERING_TARGETS kinect_filtering medianFilter)
+#set(KINECT_FILTERING_TARGETS kinect_filtering medianFilter)
 
-add_library(kinect_filtering src/kinect_filtering.cpp)
-target_link_libraries(kinect_filtering ${catkin_LIBRARIES})
-add_dependencies(kinect_filtering ${GENCPP_DEPS})
+#add_library(kinect_filtering src/kinect_filtering.cpp)
+#target_link_libraries(kinect_filtering ${catkin_LIBRARIES})
+#add_dependencies(kinect_filtering ${GENCPP_DEPS})
 
-add_library(medianFilter src/medianFilter.cpp)
-target_link_libraries(medianFilter ar_track_alvar ${catkin_LIBRARIES})
-add_dependencies(medianFilter ${GENCPP_DEPS})
+#add_library(medianFilter src/medianFilter.cpp)
+#target_link_libraries(medianFilter ar_track_alvar ${catkin_LIBRARIES})
+#add_dependencies(medianFilter ${GENCPP_DEPS})
 
 #set(ALVAR_TARGETS ar_track_alvar individualMarkers individualMarkersNoKinect trainMarkerBundle findMarkerBundles findMarkerBundlesNoKinect createMarker ar_track_alvar)
-set(ALVAR_TARGETS ar_track_alvar individualMarkersNoKinect createMarker)
+#set(ALVAR_TARGETS ar_track_alvar )
 
 #add_executable(individualMarkers nodes/IndividualMarkers.cpp)
 #target_link_libraries(individualMarkers ar_track_alvar kinect_filtering ${catkin_LIBRARIES})
 #add_dependencies(individualMarkers ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
 
-add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
-target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
-add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
+#add_executable(individualMarkersNoKinect nodes/IndividualMarkersNoKinect.cpp)
+#target_link_libraries(individualMarkersNoKinect ar_track_alvar ${catkin_LIBRARIES})
+#add_dependencies(individualMarkersNoKinect ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
 
 add_executable(individualMarkersNoKinectOpenCV nodes/IndividualMarkersNoKinectOpenCV.cpp)
 target_link_libraries(individualMarkersNoKinectOpenCV ar_track_alvar ${catkin_LIBRARIES})
 add_dependencies(individualMarkersNoKinectOpenCV ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
 
-add_library(individualMarkersNoKinectNodeLet nodes/IndividualMarkersNoKinectNode.cpp nodes/IndividualMarkersNoKinectNodeLet.cpp)
-target_link_libraries(individualMarkersNoKinectNodeLet ar_track_alvar ${catkin_LIBRARIES})
-add_dependencies(individualMarkersNoKinectNodeLet ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
+#add_library(individualMarkersNoKinectNodeLet nodes/IndividualMarkersNoKinectNode.cpp nodes/IndividualMarkersNoKinectNodeLet.cpp)
+#target_link_libraries(individualMarkersNoKinectNodeLet ar_track_alvar ${catkin_LIBRARIES})
+#add_dependencies(individualMarkersNoKinectNodeLet ${PROJECT_NAME}_gencpp  ${GENCPP_DEPS})
 
 #add_executable(trainMarkerBundle nodes/TrainMarkerBundle.cpp)
 #target_link_libraries(trainMarkerBundle ar_track_alvar ${catkin_LIBRARIES})
@@ -139,20 +139,20 @@ add_dependencies(individualMarkersNoKinectNodeLet ${PROJECT_NAME}_gencpp  ${GENC
 #target_link_libraries(findMarkerBundlesNoKinect ar_track_alvar ${catkin_LIBRARIES})
 #add_dependencies(findMarkerBundlesNoKinect ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
 
-add_executable(createMarker src/SampleMarkerCreator.cpp)
-target_link_libraries(createMarker ar_track_alvar ${catkin_LIBRARIES})
-add_dependencies(createMarker ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
+#add_executable(createMarker src/SampleMarkerCreator.cpp)
+#target_link_libraries(createMarker ar_track_alvar ${catkin_LIBRARIES})
+#add_dependencies(createMarker ${PROJECT_NAME}_gencpp ${GENCPP_DEPS})
 
-install(TARGETS ${ALVAR_TARGETS} ${KINECT_FILTERING_TARGETS}
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS ${ALVAR_TARGETS} ${KINECT_FILTERING_TARGETS}
+#  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+#install(DIRECTORY include/${PROJECT_NAME}/
+#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#)
 
-install(DIRECTORY launch/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
-)
+#install(DIRECTORY launch/
+#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+#)
